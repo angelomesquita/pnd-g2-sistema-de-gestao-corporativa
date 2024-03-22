@@ -9,19 +9,36 @@ from financeiro import contas_pagar as fin_contas_pagar
 from financeiro import contas_receber as fin_contas_receber
 from financeiro import relatorios as fin_relatorios
 
-print("Bem-vindo ao Sistema de Gestão Corporativa")
+def main(): 
+    print("Bem-vindo ao Sistema de Gestão Corporativa")
 
-print("\n--- Funcionários ---")
-func_cadastro.cadastrar_funcionario("João", "Desenvolvedor", 5000)
-func_cadastro.cadastrar_funcionario("Maria", "Desenvolvedor", 10000)
-func_cadastro.cadastrar_funcionario("José", "Estagiário", 1200)
-func_cadastro.cadastrar_funcionario("Ruth", "Diretora", 20000)
-func_folha.calcular_salarios()
-func_relatorios.gerar_relatorio_funcionarios()
+    while True:
+        print("\nOpções: ")
+        print("1. Cadastrar funcionário")
+        print("2. Calcular salários")
+        print("3. Registrar conta a pagar")
+        print("4. Registrar conta a receber")
+        print("5. Gerar relatórios")
+        print("6. Sair")
 
-print("\n--- Financeiro ---")
-fin_contas_pagar.registrar_conta(1000, "Aluguel")
-fin_contas_pagar.registrar_conta(500, "Energia")
-fin_contas_receber.registrar_conta(2000, "Cliente A")
-fin_contas_receber.registrar_conta(5000, "Cliente B")
-fin_relatorios.gerar_relatorio_financeiro()
+        opcao = input("Escolha uma opção: ")
+
+        if opcao == '1':
+            func_cadastro.cadastrar_funcionario()
+        elif opcao == '2':
+            func_folha.calcular_salarios()
+        elif opcao == '3':
+            fin_contas_pagar.registrar_conta()
+        elif opcao == '4':
+            fin_contas_receber.registrar_conta()
+        elif opcao == '5':
+            func_relatorios.gerar_relatorio_funcionarios()
+            fin_relatorios.gerar_relatorio_financeiro()
+        elif opcao == '6':
+            print("Saindo...")
+            break
+        else:
+            print("Opção inválida...")
+
+if __name__ == "__main__":
+    main()
